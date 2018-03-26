@@ -29,7 +29,7 @@ ENV HOME /home/ubuntu
 RUN echo 'CUDA=/usr/local/cuda' >> $HOME/.bashrc
 RUN echo 'export PATH=$PATH:$CUDA/bin' >> $HOME/.bashrc
 
-RUN git config --global http.sslVerify false && git clone https://github.com/MSFTserver/RavenMiner ccminer
+RUN git config --global http.sslVerify false && git clone https://github.com/brian112358/nevermore-miner.git ccminer
 RUN cd ccminer && \
     sed -i -e "s/compat\/curl-for-windows\/openssl\/openssl\/crypto\/sha/openssl/g" api.cpp && \
     chmod 755 ./*.sh && ./build.sh
