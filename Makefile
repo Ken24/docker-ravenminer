@@ -2,22 +2,22 @@ IMAGE=raven
 CONTAINER=raven-c
 
 build:
-        docker build -t $(IMAGE) .
+	docker build -t $(IMAGE) .
 run:
-        docker run -it \
-                -v `pwd`/mountpoint:/backup \
-                -p 8888:8888 \
-                --name=$(CONTAINER) \
-                $(IMAGE) /bin/bash
+	docker run -it \
+		-v `pwd`/mountpoint:/backup \
+		-p 8888:8888 \
+		--name=$(CONTAINER) \
+		$(IMAGE) /bin/bash
 shell:
-        docker exec -it $(CONTAINER) /bin/bash
+	docker exec -it $(CONTAINER) /bin/bash
 clean: rm
-        docker rmi $(IMAGE)
+	docker rmi $(IMAGE)
 rm:
-        docker rm -f $(CONTAINER)
+	docker rm -f $(CONTAINER)
 rerun: rm run
 stop:
-        docker stop $(CONTAINER)
+	docker stop $(CONTAINER)
 start:
-        docker start $(CONTAINER)
+	docker start $(CONTAINER)
 restart: stop start
